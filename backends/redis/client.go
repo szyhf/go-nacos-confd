@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/garyburd/redigo/redis"
-	"github.com/kelseyhightower/confd/log"
+	"github.com/szyhf/go-nacos-confd/log"
 )
 
 
@@ -192,7 +192,7 @@ func (c *Client) GetValues(keys []string) (map[string]string, error) {
 				} else {
 					k = fmt.Sprintf(c.transform("%s/*"), k)
 				}
-		
+
 				idx := 0
 				for {
 					values, err := redis.Values(rClient.Do("SCAN", idx, "MATCH", k, "COUNT", "1000"))
@@ -226,7 +226,7 @@ func (c *Client) GetValues(keys []string) (map[string]string, error) {
 }
 
 func (c *Client) WatchPrefix(prefix string, keys []string, waitIndex uint64, stopChan chan bool) (uint64, error) {
-		
+
 	if waitIndex == 0 {
 		return 1, nil
 	}
@@ -242,14 +242,14 @@ func (c *Client) WatchPrefix(prefix string, keys []string, waitIndex uint64, sto
 	go func() {
 		if c.psc.Conn == nil {
 			rClient, db, err := tryConnect(c.machines, c.password, false);
-	
+
 			if err != nil {
 				c.psc = redis.PubSubConn{Conn: nil}
 				c.pscChan <- watchResponse{0, err}
 				return
 			}
-		
-			c.psc = redis.PubSubConn{Conn: rClient}		
+
+			c.psc = redis.PubSubConn{Conn: rClient}
 
 			go func() {
 				defer func() {
@@ -281,7 +281,7 @@ func (c *Client) WatchPrefix(prefix string, keys []string, waitIndex uint64, sto
 					}
 				}
 			}()
-			
+
 			c.psc.PSubscribe("__keyspace@" + strconv.Itoa(db) + "__:" + c.transform(prefix) + "*")
 		}
 	}()

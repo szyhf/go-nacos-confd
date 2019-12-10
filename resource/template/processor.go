@@ -5,8 +5,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/kelseyhightower/confd/log"
-	util "github.com/kelseyhightower/confd/util"
+	"github.com/szyhf/go-nacos-confd/log"
+	util "github.com/szyhf/go-nacos-confd/util"
 )
 
 type Processor interface {

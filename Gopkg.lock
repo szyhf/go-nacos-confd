@@ -328,7 +328,7 @@
 
 [[projects]]
   digest = "1:8e8dce07da028ff4f37a2f15295be0633ca7035d2194784f036c7a27b096718d"
-  name = "github.com/nacos-group/nacos-sdk-go"
+  name = "github.com/szyhf/go-nacos-sdk"
   packages = [
     "clients",
     "clients/cache",
@@ -562,13 +562,13 @@
     "github.com/hashicorp/consul/api",
     "github.com/hashicorp/vault/api",
     "github.com/kelseyhightower/memkv",
-    "github.com/nacos-group/nacos-sdk-go/clients",
-    "github.com/nacos-group/nacos-sdk-go/clients/config_client",
-    "github.com/nacos-group/nacos-sdk-go/clients/naming_client",
-    "github.com/nacos-group/nacos-sdk-go/common/constant",
-    "github.com/nacos-group/nacos-sdk-go/model",
-    "github.com/nacos-group/nacos-sdk-go/utils",
-    "github.com/nacos-group/nacos-sdk-go/vo",
+    "github.com/szyhf/go-nacos-sdk/clients",
+    "github.com/szyhf/go-nacos-sdk/clients/config_client",
+    "github.com/szyhf/go-nacos-sdk/clients/naming_client",
+    "github.com/szyhf/go-nacos-sdk/common/constant",
+    "github.com/szyhf/go-nacos-sdk/model",
+    "github.com/szyhf/go-nacos-sdk/utils",
+    "github.com/szyhf/go-nacos-sdk/vo",
     "github.com/samuel/go-zookeeper/zk",
     "github.com/sirupsen/logrus",
     "github.com/xordataexchange/crypt/encoding/secconf",

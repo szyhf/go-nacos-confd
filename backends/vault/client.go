@@ -11,7 +11,7 @@ import (
 	"path"
 
 	vaultapi "github.com/hashicorp/vault/api"
-	"github.com/kelseyhightower/confd/log"
+	"github.com/szyhf/go-nacos-confd/log"
 )
 
 // Client is a wrapper around the vault client

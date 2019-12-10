@@ -15,9 +15,9 @@ import (
 	"text/template"
 
 	"github.com/BurntSushi/toml"
-	"github.com/kelseyhightower/confd/backends"
-	"github.com/kelseyhightower/confd/log"
-	util "github.com/kelseyhightower/confd/util"
+	"github.com/szyhf/go-nacos-confd/backends"
+	"github.com/szyhf/go-nacos-confd/log"
+	util "github.com/szyhf/go-nacos-confd/util"
 	"github.com/kelseyhightower/memkv"
 	"github.com/xordataexchange/crypt/encoding/secconf"
 )

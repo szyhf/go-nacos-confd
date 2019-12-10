@@ -10,7 +10,7 @@ import (
 	"golang.org/x/net/context"
 
 	"github.com/coreos/etcd/clientv3"
-	"github.com/kelseyhightower/confd/log"
+	"github.com/szyhf/go-nacos-confd/log"
 	"sync"
 )
 
@@ -150,12 +150,12 @@ func NewEtcdClient(machines []string, cert, key, caCert string, basicAuth bool, 
 	if tlsEnabled {
 		cfg.TLS = tlsConfig
 	}
-	
+
 	client, err := clientv3.New(cfg)
 	if err != nil {
 		return &Client{}, err
 	}
-	
+
 	return &Client{client, make(map[string]*Watch), sync.Mutex{}}, nil
 }
 
@@ -171,16 +171,16 @@ func (c *Client) GetValues(keys []string) (map[string]string, error) {
 	doTxn := func (ops []string) error {
 		ctx, cancel := context.WithTimeout(context.Background(), time.Duration(3) * time.Second)
 		defer cancel()
-		
+
 		txnOps := make([]clientv3.Op, 0, maxTxnOps)
-		
+
 		for _, k := range ops {
 			txnOps = append(txnOps, clientv3.OpGet(k,
 											   clientv3.WithPrefix(),
 											   clientv3.WithSort(clientv3.SortByKey, clientv3.SortDescend),
 											   clientv3.WithRev(first_rev)))
 		}
-		
+
 		result, err := c.client.Txn(ctx).Then(txnOps...).Commit()
 		if err != nil {
 			return err
@@ -224,7 +224,7 @@ func (c *Client) GetValues(keys []string) (map[string]string, error) {
 
 func (c *Client) WatchPrefix(prefix string, keys []string, waitIndex uint64, stopChan chan bool) (uint64, error) {
 	var err error
-	
+
 	// Create watch for each key
 	watches := make(map[string]*Watch)
 	c.wm.Lock()
@@ -254,7 +254,7 @@ func (c *Client) WatchPrefix(prefix string, keys []string, waitIndex uint64, sto
 			return
 		}
 	}()
-	
+
 	notify := make(chan int64)
 	// Wait for all watches
 	for _, v := range watches {

@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/kelseyhightower/confd/log"
+	"github.com/szyhf/go-nacos-confd/log"
 )
 
 func TestInitConfigDefaultConfig(t *testing.T) {

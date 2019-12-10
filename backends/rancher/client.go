@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	log "github.com/kelseyhightower/confd/log"
+	log "github.com/szyhf/go-nacos-confd/log"
 )
 
 const (

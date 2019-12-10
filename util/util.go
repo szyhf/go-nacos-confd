@@ -2,7 +2,7 @@ package util
 
 import (
 	"fmt"
-	"github.com/kelseyhightower/confd/log"
+	"github.com/szyhf/go-nacos-confd/log"
 	"os"
 	"path"
 	"path/filepath"

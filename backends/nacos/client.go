@@ -1,14 +1,14 @@
 package nacos
 
 import (
-	"github.com/nacos-group/nacos-sdk-go/clients/config_client"
-	"github.com/nacos-group/nacos-sdk-go/clients/naming_client"
-	"github.com/nacos-group/nacos-sdk-go/clients"
-	"github.com/nacos-group/nacos-sdk-go/common/constant"
-	"github.com/nacos-group/nacos-sdk-go/model"
-	"github.com/nacos-group/nacos-sdk-go/vo"
-	"github.com/nacos-group/nacos-sdk-go/utils"
-	"github.com/kelseyhightower/confd/log"
+	"github.com/szyhf/go-nacos-sdk/clients/config_client"
+	"github.com/szyhf/go-nacos-sdk/clients/naming_client"
+	"github.com/szyhf/go-nacos-sdk/clients"
+	"github.com/szyhf/go-nacos-sdk/common/constant"
+	"github.com/szyhf/go-nacos-sdk/model"
+	"github.com/szyhf/go-nacos-sdk/vo"
+	"github.com/szyhf/go-nacos-sdk/utils"
+	"github.com/szyhf/go-nacos-confd/log"
 
 	"fmt"
 	"strings"
@@ -131,7 +131,7 @@ func (client *Client) WatchPrefix(prefix string, keys []string, waitIndex uint64
 					SubscribeCallback: func(services []model.SubscribeService, err error) {
 						log.Info(fmt.Sprintf("\n\n callback return services:%s \n\n", utils.ToJsonString(services)))
 						for i := 0; i < client.count; i++ {
-        					client.channel <- 1	
+        					client.channel <- 1
     					}
 					},
 				})
@@ -142,7 +142,7 @@ func (client *Client) WatchPrefix(prefix string, keys []string, waitIndex uint64
 					OnChange: func(namespace, group, dataId, data string) {
 						log.Info(fmt.Sprintf("config namespace=%s, dataId=%s, group=%s has changed", namespace, dataId, group))
 						for i := 0; i < client.count; i++ {
-        					client.channel <- 1	
+        					client.channel <- 1
     					}
 					},
 				})
